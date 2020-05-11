@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>配達員検索サイト</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!---fontawesomのリンク-->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <!----ajaxファイル-->
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  <!----css-->
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<header>
+  <div class="bg-slider">
+    <div class="top-text" id="top">
+      <h1>コザ販売店</h1>
+    </div>
+<!--天気-->
+    <div class="whether">
+      <button onclick="buttonclick();">今日の天気</button>
+      <div id="mydiv"></div>
+    </div>
+
+    <!----検索-->
+    　<div class="searchver">
+      <form id="form2" action="自分のサイトURL" method="get"></form>
+      <p>▼郵便番号入力(7桁)</p>
+      <div class="search-post">
+        <input type="text" id="sbox1" name="zip11" size="10" maxlength="8"
+          onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');"><br>
+      </div>
+      <p>▼住所入力</p>
+      <div class="search-ad">
+        <input type="text" id="sbox2" name="addr11" size="60">
+        <i class="fas fa-search" id="sbtn2"></i>
+      </div>
+      </form>
+    </div>
+  </div>
+ </header>
+
+
+<body>
+  <!---navber-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="#"><h3>コザ販売店</h3></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="justify-content-end collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#top"><i class="fas fa-search"></i> 住所検索<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#misato"><i class="fas fa-utensils"></i> 美里本部</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#takahara"><i class="fas fa-home"></i>高原本部</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#awase"><i class="fas fa-anchor"></i>泡瀬本部</a>
+        </li>
+      </ul>
+    </div>
+  </nav>  
+
+  <!---misato table-->
+  <div class="mainoffice">
+    <table class="table">
+      <thead>
+              <div class="d-flex align-items-center">
+                 <p class="misatomf" id="misato">美里本部</p>
+                <button type="button" class="btn btn-outline-secondary" id="editbtn">編集</button>
+              </div>
+
+        <tr id="miyazatobr">
+          <th scope="col">宮里支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+      <tbody>
+<!---宮里１段目-->
+        <tr>
+          <th scope="row">1</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide1">金城さん
+          <div class="pulldown-body slide1" >09090090909090</div></td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide2">米田さん
+          <div class="pulldown-body slide2" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---宮里2段目-->
+        <tr>
+          <th scope="row">2</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide3">金城さん
+            <div class="pulldown-body slide3" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide4">米田さん
+            <div class="pulldown-body slide4" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---宮里3段目-->
+        <tr>
+          <th scope="row">3</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide5">金城さん
+            <div class="pulldown-body slide5" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide6">米田さん
+            <div class="pulldown-body slide6" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---宮里4段目-->
+        <tr>
+          <th scope="row">4</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide7">金城さん
+            <div class="pulldown-body slide7" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide8">米田さん
+            <div class="pulldown-body slide8" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+
+        <tr id="miyazatobr">
+          <th scope="col">池原支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+      <tbody>
+<!---池原１段目-->
+        <tr>
+          <th scope="row">5</th>
+          <td >宮里地区</td>
+          <td class="pulldown-head" data-slide="slide9">金城さん
+            <div class="pulldown-body slide9" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide10">米田さん
+            <div class="pulldown-body slide10" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---池原2段目-->
+        <tr>
+          <th scope="row">6</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide11">金城さん
+            <div class="pulldown-body slide11" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide12">米田さん
+            <div class="pulldown-body slide12" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---池原3段目-->
+        <tr>
+          <th scope="row">7</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide13">金城さん
+            <div class="pulldown-body slide13" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide14">米田さん
+            <div class="pulldown-body slide14" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---池原4段目-->
+        <tr>
+          <th scope="row">8</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide15">金城さん
+            <div class="pulldown-body slide15" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide16">米田さん
+            <div class="pulldown-body slide16" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+
+        <tr id="miyazatobr">
+          <th scope="col">美里支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+<!---美里1段目-->
+      <tbody>
+        <tr>
+          <th scope="row">9</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide17">金城さん
+            <div class="pulldown-body slide17" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide18">米田さん
+            <div class="pulldown-body slide18" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---美里2段目-->
+        <tr>
+          <th scope="row">10</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide19">金城さん
+            <div class="pulldown-body slide19" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide20">米田さん
+            <div class="pulldown-body slide20" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---美里3段目-->
+        <tr>
+          <th scope="row">11</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide21">金城さん
+            <div class="pulldown-body slide21" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide22">米田さん
+            <div class="pulldown-body slide22" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---美里4段目-->
+        <tr>
+          <th scope="row">12</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide23">金城さん
+            <div class="pulldown-body slide23" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide24">米田さん
+            <div class="pulldown-body slide24" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<!---スライド-->
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/misato01.jpg" class="d-block w-100" alt="1枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>宮里</h5>
+            <!-- <p>美里</p> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/misato02.jpg" class="d-block w-100" alt="２枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>池原</h5>
+            <!-- <p>宮里</p> -->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/misato03.jpg" class="d-block w-100" alt="３枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>美里</h5>
+            <!-- <p>美里</p> -->
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+<!---美里本部説明-->
+    <div class="introduction-list" id="misato-description">
+      <h2>美里本部</h2> 
+      <div class="container">
+       <div class="row">
+           
+           <div class="col-md-6 order-md-1">
+               <img src="img/people.jpg" alt="1枚目" class="introduction-img">
+         </div>
+           <div class="col-md-6 order-md-2" class="introduction-title">
+               <h3>宮里支部　</h3>
+               <a href="" class="btn btn-outline-light">編集</a>
+
+                <hr color="white">
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+           
+           <div class="col-md-6 order-md-4">
+               <img src="img/people02.jpg" alt="2枚目" class="introduction-img">
+         </div>
+         <div class="col-md-6 service-discription order-md-3">
+               <h3>池原支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+                <hr color="white">
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+           
+          <div class="col-md-6 order-md-5">
+               <img src="img/people03.jpg" alt="3枚目" class="introduction-img">
+         </div>
+           <div class="col-md-6 service-discription order-md-6">
+               <h3>美里支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+                <hr color="white">
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+       </div>
+      </div>
+      
+   </div>
+ </div>
+</div>
+
+ <!---takahara table-->
+  <div class="mainoffice" id="takahara">
+    <table class="table">
+      <thead>
+              <div class="d-flex align-items-center">
+                 <p class="misatomf" >高原本部</p>
+                <button type="button" class="btn btn-outline-secondary" id="editbtn">編集</button>
+              </div>
+<!---項目table-->
+        <tr id="miyazatobr">
+          <th scope="col" id="hiyagon">比屋根支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+<!---比屋根１段目-->
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide1">金城さん
+          <div class="pulldown-body slide1" >09090090909090</div></td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide2">米田さん
+          <div class="pulldown-body slide2" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---比屋根２段目-->
+        <tr>
+          <th scope="row">2</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide3">金城さん
+            <div class="pulldown-body slide3" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide4">米田さん
+            <div class="pulldown-body slide4" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---比屋根３段目-->
+        <tr>
+          <th scope="row">3</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide5">金城さん
+            <div class="pulldown-body slide5" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide6">米田さん
+            <div class="pulldown-body slide6" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---比屋根４段目-->
+        <tr>
+          <th scope="row">4</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide7">金城さん
+            <div class="pulldown-body slide7" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide8">米田さん
+            <div class="pulldown-body slide8" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+
+        <tr id="miyazatobr">
+          <th scope="col">高原支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+<!---高原1段目-->
+      <tbody>
+        <tr>
+          <th scope="row">5</th>
+          <td >宮里地区</td>
+          <td class="pulldown-head" data-slide="slide9">金城さん
+            <div class="pulldown-body slide9" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide10">米田さん
+            <div class="pulldown-body slide10" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---高原2段目-->
+        <tr>
+          <th scope="row">6</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide11">金城さん
+            <div class="pulldown-body slide11" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide12">米田さん
+            <div class="pulldown-body slide12" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---高原3段目-->
+        <tr>
+          <th scope="row">7</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide13">金城さん
+            <div class="pulldown-body slide13" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide14">米田さん
+            <div class="pulldown-body slide14" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---高原4段目-->
+        <tr>
+          <th scope="row">8</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide15">金城さん
+            <div class="pulldown-body slide15" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide16">米田さん
+            <div class="pulldown-body slide16" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+
+        <tr id="miyazatobr">
+          <th scope="col">太陽支部</th>
+          <th scope="col">地区名</th>
+          <th scope="col">配達員</th>
+          <th scope="col">代配者</th>
+          <th scope="col">集金者</th>
+        </tr>
+      </thead>
+<!---太陽1段目-->
+      <tbody>
+        <tr>
+          <th scope="row">9</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide17">金城さん
+            <div class="pulldown-body slide17" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide18">米田さん
+            <div class="pulldown-body slide18" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---太陽2段目-->
+        <tr>
+          <th scope="row">10</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide19">金城さん
+            <div class="pulldown-body slide19" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide20">米田さん
+            <div class="pulldown-body slide20" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---太陽3段目-->
+        <tr>
+          <th scope="row">11</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide21">金城さん
+            <div class="pulldown-body slide21" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide22">米田さん
+            <div class="pulldown-body slide22" >09090090909090</div></td>
+          </td>
+        </tr>
+<!---太陽4段目-->
+        <tr>
+          <th scope="row">12</th>
+          <td>宮里地区</td>
+          <td class="pulldown-head" data-slide="slide23">金城さん
+            <div class="pulldown-body slide23" >09090090909090</div></td>
+          </td>
+          <td>代配１</td>
+          <td class="pulldown-head" data-slide="slide24">米田さん
+            <div class="pulldown-body slide24" >09090090909090</div></td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<!---スライド-->
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" id="slide">
+        <div class="carousel-item active">
+          <img src="img/takahara01.jpg" class="d-block w-100" alt="1枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>スライド１</h5>
+            <p>説明</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/takahara02.jpg" class="d-block w-100" alt="２枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>スライド２</h5>
+            <p>説明</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/takahara03.jpg" class="d-block w-100" alt="３枚目">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>スライド３</h5>
+            <p>説明</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+<!---説明-->
+    <div class="introduction-list" id="takahara-description">
+      <h2>高原本部</h2> 
+      <div class="container">
+       <div class="row">
+           
+           <div class="col-md-6 order-md-1">
+               <img src="img/people.jpg" alt="1枚目" class="introduction-img">
+         </div>
+           <div class="col-md-6 order-md-2" class="introduction-title">
+               <h3>比屋根支部　</h3>
+               <a href="" class="btn btn-outline-light">編集</a>
+
+                <hr color="white">
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+           
+           <div class="col-md-6 order-md-4">
+               <img src="img/people02.jpg" alt="2枚目" class="introduction-img">
+         </div>
+         <div class="col-md-6 service-discription order-md-3">
+               <h3>高原支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+                <hr color="white">
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+           
+          <div class="col-md-6 order-md-5">
+               <img src="img/people03.jpg" alt="3枚目" class="introduction-img">
+         </div>
+           <div class="col-md-6 service-discription order-md-6">
+               <h3>太陽支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+                <hr color="white">
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+                <p>金城さん/2010年10月〜/10年目</p>
+               
+           </div>
+       </div>
+      </div>
+      
+   </div>
+ </div>
+</div>
+
+
+<!---awase table-->
+<div class="mainoffice" id="awase">
+  <table class="table">
+    <thead>
+            <div class="d-flex align-items-center">
+               <p class="misatomf" >泡瀬本部</p>
+              <button type="button" class="btn btn-outline-secondary" id="editbtn">編集</button>
+            </div>
+<!---項目table-->
+      <tr id="miyazatobr">
+        <th scope="col">海邦支部</th>
+        <th scope="col">地区名</th>
+        <th scope="col">配達員</th>
+        <th scope="col">代配者</th>
+        <th scope="col">集金者</th>
+      </tr>
+    </thead>
+<!---海邦１段目-->
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide1">金城さん
+        <div class="pulldown-body slide1" >09090090909090</div></td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide2">米田さん
+        <div class="pulldown-body slide2" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---海邦２段目-->
+      <tr>
+        <th scope="row">2</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide3">金城さん
+          <div class="pulldown-body slide3" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide4">米田さん
+          <div class="pulldown-body slide4" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---海邦３段目-->
+      <tr>
+        <th scope="row">3</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide5">金城さん
+          <div class="pulldown-body slide5" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide6">米田さん
+          <div class="pulldown-body slide6" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---海邦４段目-->
+      <tr>
+        <th scope="row">4</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide7">金城さん
+          <div class="pulldown-body slide7" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide8">米田さん
+          <div class="pulldown-body slide8" >09090090909090</div></td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+
+      <tr id="miyazatobr">
+        <th scope="col">泡瀬支部</th>
+        <th scope="col">地区名</th>
+        <th scope="col">配達員</th>
+        <th scope="col">代配者</th>
+        <th scope="col">集金者</th>
+      </tr>
+    </thead>
+<!---泡瀬１段目-->
+    <tbody>
+      <tr>
+        <th scope="row">5</th>
+        <td >宮里地区</td>
+        <td class="pulldown-head" data-slide="slide9">金城さん
+          <div class="pulldown-body slide9" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide10">米田さん
+          <div class="pulldown-body slide10" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---泡瀬２段目-->
+      <tr>
+        <th scope="row">6</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide11">金城さん
+          <div class="pulldown-body slide11" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide12">米田さん
+          <div class="pulldown-body slide12" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---泡瀬３段目-->
+      <tr>
+        <th scope="row">7</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide13">金城さん
+          <div class="pulldown-body slide13" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide14">米田さん
+          <div class="pulldown-body slide14" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---泡瀬４段目-->
+      <tr>
+        <th scope="row">8</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide15">金城さん
+          <div class="pulldown-body slide15" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide16">米田さん
+          <div class="pulldown-body slide16" >09090090909090</div></td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+
+      <tr id="miyazatobr">
+        <th scope="col">照屋支部</th>
+        <th scope="col">地区名</th>
+        <th scope="col">配達員</th>
+        <th scope="col">代配者</th>
+        <th scope="col">集金者</th>
+      </tr>
+    </thead>
+<!---照屋１段目-->
+    <tbody>
+      <tr>
+        <th scope="row">9</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide17">金城さん
+          <div class="pulldown-body slide17" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide18">米田さん
+          <div class="pulldown-body slide18" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---照屋２段目-->
+      <tr>
+        <th scope="row">10</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide19">金城さん
+          <div class="pulldown-body slide19" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide20">米田さん
+          <div class="pulldown-body slide20" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---照屋３段目-->
+      <tr>
+        <th scope="row">11</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide21">金城さん
+          <div class="pulldown-body slide21" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide22">米田さん
+          <div class="pulldown-body slide22" >09090090909090</div></td>
+        </td>
+      </tr>
+<!---照屋４段目-->
+      <tr>
+        <th scope="row">12</th>
+        <td>宮里地区</td>
+        <td class="pulldown-head" data-slide="slide23">金城さん
+          <div class="pulldown-body slide23" >09090090909090</div></td>
+        </td>
+        <td>代配１</td>
+        <td class="pulldown-head" data-slide="slide24">米田さん
+          <div class="pulldown-body slide24" >09090090909090</div></td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<!---スライド-->
+<div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/awase01.jpg" class="d-block w-100" alt="1枚目">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>スライド１</h5>
+          <p>説明</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/awase02.jpg" class="d-block w-100" alt="２枚目">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>スライド２</h5>
+          <p>説明</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/awase03.jpg" class="d-block w-100" alt="３枚目">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>スライド３</h5>
+          <p>説明</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<!---説明-->
+  <div class="introduction-list" id="awase-description">
+    <h2> 泡瀬本部</h2> 
+    <div class="container">
+     <div class="row">
+         
+         <div class="col-md-6 order-md-1">
+             <img src="img/people.jpg" alt="1枚目" class="introduction-img">
+       </div>
+         <div class="col-md-6 order-md-2" class="introduction-title">
+             <h3>海邦支部　</h3>
+             <a href="" class="btn btn-outline-light">編集</a>
+
+              <hr color="white">
+             <p>金城さん/2010年10月〜/10年目</p>
+             <p>金城さん/2010年10月〜/10年目</p>
+             <p>金城さん/2010年10月〜/10年目</p>
+             <p>金城さん/2010年10月〜/10年目</p>
+             <p>金城さん/2010年10月〜/10年目</p>
+             <p>金城さん/2010年10月〜/10年目</p>
+             
+         </div>
+         
+         <div class="col-md-6 order-md-4">
+             <img src="img/people02.jpg" alt="2枚目" class="introduction-img">
+       </div>
+       <div class="col-md-6 service-discription order-md-3">
+             <h3>泡瀬支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+              <hr color="white">
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+             
+         </div>
+         
+        <div class="col-md-6 order-md-5">
+             <img src="img/people03.jpg" alt="3枚目" class="introduction-img">
+       </div>
+         <div class="col-md-6 service-discription order-md-6">
+             <h3>照屋支部　<a href="" class="btn btn-outline-light">編集</a></h3>
+              <hr color="white">
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+              <p>金城さん/2010年10月〜/10年目</p>
+             
+         </div>
+     </div>
+    </div>
+    
+ </div>
+</div>
+</div>
+
+<!---フッター-->
+  <footer>
+    <div class="container">
+      <div class="row">
+          
+          <div class="col-md-6 col-ms-6">
+            <ul>
+              <li><a href="#">住所検索</a></li>
+              <li><a href="#misato">美里本部</a></li>
+              <li><a href="#takahara">高原本部</a></li>
+              <li><a href="#awase">泡瀬本部</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-ms-6">
+            <ul>
+              <li><a href="#misato-description">美里本部詳細</a></li>
+              <li><a href="#takahara-description">高原本部詳細</a></li>
+              <li><a href="#takahara-description">泡瀬本部詳細</a></li>
+            </ul>
+          </div>
+                      
+      </div>
+    </div>
+
+    <p>&copy; 2020-2021 Search address</p>
+  </footer>
+  
+  <!---bootstrap-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="js/bgswitcher.js"></script>
+<script src="js/site01.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!---ajaxファイルパス-->
+<script src="js/ajaxzip3.js" charset="UTF-8"></script>
+
+</html>
+

@@ -1,0 +1,211 @@
+*{
+    margin:0;
+    padding:0;
+    color:orange    ;
+    font-family:  Arial,"helvetica,clean,sans-serif" "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+   
+    
+}
+/* fade anime */
+.bg-slider {
+	width: 100vw;
+	height: 100vh;
+	background-position:center center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+}
+ /* top-text */
+ 
+h1{
+    position: absolute;
+    top:10px;
+    left:10px;
+    font-weight: bold;
+    background-color: bisque;
+    border-radius: 20px;
+    padding:3px;
+}
+
+.whether{
+    position: absolute;
+    top:30px;
+    right:10px;
+    text-shadow:2px 2px 1px black;
+    border-radius: 10%;
+}
+/* 検索バー */
+.searchver{
+    position: relative;
+    margin:300px  auto 0;
+    padding-bottom:100px;
+    width:400px;
+    border:wihte;
+}
+.searchver p{
+    margin-bottom:0;
+    font-weight: bold;
+    background-color: bisque;
+    width: 40%;
+    border-radius: 20px;
+}
+.search-post{
+    width: 25%;
+    /* border:solid 1px black; */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    background-color: white;
+    padding: 6px;
+    border-radius: 10px;
+    margin-bottom:5px;
+}
+
+
+#sbox1{
+    border:none;
+    width:80%;
+}
+
+.search-ad{
+    width: 80%;
+    /* border:solid 1px black; */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    background-color: white;
+    padding-left: 5px;
+    border-radius: 10px;
+    border:none;
+}
+/* 住所検索 */
+#sbox2{
+    border:none;
+    width:90%;
+    height: 30px;
+    border-radius: 10px;
+    /* padding-bottom:10px; */
+}
+
+#sbox1{
+    border: none;
+}
+/* 検索アイコン */
+#sbtn2{
+    float: right;
+    border:none;
+    background-color: white;
+    margin-top:6px;
+}
+
+/* 本部 */
+.misatomf{
+    margin:5px;
+    position: relative;
+    font-size: 30px;
+    
+}
+
+/* 編集ボタン */
+#editbtn{
+   position: absolute;
+   right:15px;
+    height: 3%;
+    padding-top:2px;
+}
+/* 項目*/
+#miyazatobr{
+    background-color:rgb(94, 128, 0);
+}
+        
+#hiyagon{
+    padding-right:0;
+
+}
+
+/* 隠しナンバー */
+.table tbody tr div{
+    display:none;
+}
+
+
+.carousel-item img{
+    height:70%;
+    width: 100%;
+}
+
+
+/* 本部別紹介 */
+.introduction-list{
+    background-color:#333;
+    padding:50px;
+}
+/* 本部紹介見出し */
+.introduction-list h2{
+    font-size:60px;
+    font-family: "myfont";
+    text-align: center;
+}
+
+
+/* 支部画像 */
+.introduction-img{
+    width:100%;
+    padding-bottom:10px;
+}
+
+/* 支部名 */
+.introduction-list h3{
+    margin:0px;
+    padding:0px;
+    text-align: center;
+    position: relative;
+  
+}
+
+/* 支部編集ボタン */
+.introduction-list a{
+    position: absolute;
+    right:15px;
+    top:0px;
+}
+  
+    
+
+/* 支部説明 */
+.introduction-list p{
+    margin:1px;
+    text-align: center;
+}
+
+/* フッター */
+footer{
+    background-color: navy;
+    /* height: 200px; */
+    background-size: cover;
+    margin-bottom:0 ;
+    padding: 30px;
+    text-align: center;
+}
+
+footer ul{
+    text-align: center;
+}
+/* フッターリスト */
+footer ul li{
+    margin: 0px;
+    list-style:none;
+    
+}
+
+footer ul li a{
+    color:orange
+};
+
+
+footer ul li :hover{
+    text-decoration:none;
+    color:#fff;
+}
+
+footer p{
+    text-align: right;
+}
